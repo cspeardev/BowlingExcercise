@@ -34,6 +34,7 @@ public class BowlingGame
         {
             int rolledPins = r.Next(0, (rollingFrame.RemainingPins + 1));
             Roll roll = new Roll(rolledPins, rollingFrame, PreviousRoll);
+            PreviousRoll = roll;
             rollingFrame.Roll(roll);
             rolls.Insert(0, roll);
             SpareStrikeBonus(rolledPins);
@@ -76,6 +77,14 @@ public class BowlingGame
         get
         {
             return Frames.All(f => f.Finished);
+        }
+    }
+
+    public Roll? LastRoll
+    {
+        get
+        {
+            return rolls.FirstOrDefault();
         }
     }
 }

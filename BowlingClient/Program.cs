@@ -15,6 +15,7 @@ while (continuePlaying)
         game.Roll();
     }
     PrintGame(game);
+    Console.WriteLine("Game over.");
     Console.WriteLine("Would you like to play again?");
     Console.WriteLine("Enter press Y and enter to play another game.");
     string input = Console.ReadLine();
@@ -28,9 +29,6 @@ void PrintGame(BowlingGame game)
 {
     StringBuilder builder = new();
 
-    //TODO: Print header
-
-
     builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|", "Frame", "Roll 1", "Roll 2", "Roll 3"));
 
     int frameNumber = 1;
@@ -39,8 +37,25 @@ void PrintGame(BowlingGame game)
         builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|", frameNumber++, frame.Rolls[0], frame.Rolls[1], frame.Rolls.Count() > 2 ? frame.Rolls[2].ToString() : ""));
     }
 
-    builder.AppendLine($"Total score: {game.Score}");
+    if(game.LastRoll != null)
+    {
+        if (game.LastRoll.Strike)
+        {
+            builder.AppendLine("You rolled a strike!");
+        }
+        else if (game.LastRoll.Spare)
+        {
+            builder.AppendLine($"You hit {game.LastRoll.PinsHit} pin{(game.LastRoll.PinsHit == 1 ? "" : "s")} and got a spare!");
+        }
+        else
+        {
 
+            builder.AppendLine($"You hit {game.LastRoll.PinsHit} pin{(game.LastRoll.PinsHit == 1 ? "" : "s")}.");
+        }
+    }
+
+    builder.AppendLine($"Total score: {game.Score}");
+    
     Console.Clear();
     Console.WriteLine(builder.ToString());
 
