@@ -1,15 +1,26 @@
 ﻿using BowlingEngine;
 using System.Text;
 
-BowlingGame game = new();
 
-while (!game.IsGameFinished)
+bool continuePlaying = true;
+
+while (continuePlaying)
 {
+    BowlingGame game = new();
+    while (!game.IsGameFinished)
+    {
+        PrintGame(game);
+        Console.WriteLine("Press enter to roll.");
+        Console.ReadLine();
+        game.Roll();
+    }
     PrintGame(game);
-    Console.ReadLine();
-    game.Roll();
+    Console.WriteLine("Would you like to play again?");
+    Console.WriteLine("Enter press Y and enter to play another game.");
+    string input = Console.ReadLine();
+    continuePlaying = input.ToLower() == "y";
 }
-PrintGame(game);
+
 
 
 
