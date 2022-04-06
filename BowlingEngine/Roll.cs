@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BowlingEngine.Models;
+namespace BowlingEngine;
 
 public class Roll
 {
@@ -38,7 +38,7 @@ public class Roll
     {
         get
         {
-            if (RolledFrame.Equals(PreviousRoll?.RolledFrame) && (PinsHit + PreviousRoll?.PinsHit) == Frame.PIN_COUNT)
+            if (RolledFrame.Equals(PreviousRoll?.RolledFrame) && PinsHit + PreviousRoll?.PinsHit == Frame.PIN_COUNT)
             {
                 return true;
             }

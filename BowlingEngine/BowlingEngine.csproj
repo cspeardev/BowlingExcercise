@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BowlingEngine.Models\BowlingEngine.Models.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,7 +1,8 @@
-﻿using BowlingEngine.Models;
+﻿namespace BowlingEngine;
 
-namespace BowlingEngine;
-
+/// <summary>
+/// Class for logic of bowling game.
+/// </summary>
 public class BowlingGame
 {
     public List<Frame> Frames { get; private set; }
@@ -15,6 +16,9 @@ public class BowlingGame
     private List<Roll> rolls = new();
     private Roll? PreviousRoll;
 
+    /// <summary>
+    /// Constructor.
+    /// </summary>
     public BowlingGame()
     {
         Frames = new List<Frame>();
@@ -43,6 +47,10 @@ public class BowlingGame
         }
     }
 
+    /// <summary>
+    /// Adds bonus for strike or roll to a frame.
+    /// </summary>
+    /// <param name="rolledPins"></param>
     private void SpareStrikeBonus(int rolledPins)
     {
         if (rolls.ElementAtOrDefault(1) != null && rolls[1].Spare)
@@ -74,6 +82,9 @@ public class BowlingGame
         } 
     }
 
+    /// <summary>
+    /// Whether game is completed.
+    /// </summary>
     public bool IsGameFinished
     {
         get
@@ -82,6 +93,9 @@ public class BowlingGame
         }
     }
 
+    /// <summary>
+    /// Returns the last last roll that was performed in the game.
+    /// </summary>
     public Roll? LastRoll
     {
         get
