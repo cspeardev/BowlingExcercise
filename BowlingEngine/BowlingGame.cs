@@ -4,13 +4,16 @@ namespace BowlingEngine;
 
 public class BowlingGame
 {
-    private static Random r = new();
     public List<Frame> Frames { get; private set; }
-    private List<Roll> rolls = new();
-
+    
     private const int FRAME_COUNT = 10;
     private const int FINAL_FRAME_ROLLS = 3;
     private const int FRAME_ROLLS = 2;
+
+    private static Random r = new();
+
+    private List<Roll> rolls = new();
+    private Roll? PreviousRoll;
 
     public BowlingGame()
     {
@@ -22,7 +25,6 @@ public class BowlingGame
         Frames.Add(new(FINAL_FRAME_ROLLS, true));
     }
 
-    private Roll PreviousRoll;
 
     /// <summary>
     /// Perform a roll.

@@ -141,14 +141,4 @@ public class Frame
             SpareBonus = pins;
         }
     }
-
-    public bool Strike
-    {
-        get => Rolls[0].HasValue && Rolls[0] == PIN_COUNT;
-    }
-
-    public bool Spare
-    {
-        get => (!Strike && Rolls.Sum() == PIN_COUNT);
-    }
 }

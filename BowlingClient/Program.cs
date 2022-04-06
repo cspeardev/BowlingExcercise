@@ -29,12 +29,12 @@ void PrintGame(BowlingGame game)
 {
     StringBuilder builder = new();
 
-    builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|", "Frame", "Roll 1", "Roll 2", "Roll 3"));
+    builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|{4,12}|", "Frame", "Roll 1", "Roll 2", "Roll 3", "Frame Score"));
 
     int frameNumber = 1;
     foreach (var frame in game.Frames)
     {
-        builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|", frameNumber++, frame.Rolls[0], frame.Rolls[1], frame.Rolls.Count() > 2 ? frame.Rolls[2].ToString() : ""));
+        builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|{4,12}|", frameNumber++, frame.Rolls[0], frame.Rolls[1], frame.Rolls.Count() > 2 ? frame.Rolls[2].ToString() : "", frame.Score));
     }
 
     if(game.LastRoll != null)
