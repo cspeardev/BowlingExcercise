@@ -71,12 +71,7 @@ public class BowlingGame
     /// </summary>
     public int Score { get
         {
-            int totalScore = 0;
-            foreach(Frame frame in Frames)
-            {
-                totalScore+=frame.Score;
-            }
-            return totalScore;
+            return Frames.Select(frame => frame.Score).Sum();
         } 
     }
 
