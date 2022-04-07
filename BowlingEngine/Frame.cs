@@ -91,7 +91,7 @@ public class Frame
                     {
                         //Case for when there was a strike the first roll of the final frame, and a spare for the last two.
                         int remainingPins = PIN_COUNT;
-                        remainingPins -= Rolls.LastOrDefault(r => r.HasValue).Value;
+                        remainingPins -= Rolls.LastOrDefault(r => r.HasValue).GetValueOrDefault();
                         return remainingPins;
                     }
                 }

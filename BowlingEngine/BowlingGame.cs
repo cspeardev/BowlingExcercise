@@ -5,15 +5,13 @@
 /// </summary>
 public class BowlingGame
 {
-    public List<Frame> Frames { get; private set; }
-    
     private const int FRAME_COUNT = 10;
     private const int FINAL_FRAME_ROLLS = 3;
     private const int FRAME_ROLLS = 2;
 
-    private static Random r = new();
+    private static readonly Random r = new();
 
-    private List<Roll> rolls = new();
+    private readonly List<Roll> rolls = new();
     private Roll? PreviousRoll;
 
     /// <summary>
@@ -39,7 +37,7 @@ public class BowlingGame
         if (rollingFrame != null)
         {
             int rolledPins = r.Next(0, (rollingFrame.RemainingPins + 1));
-            Roll roll = new Roll(rolledPins, rollingFrame, PreviousRoll);
+            Roll roll = new(rolledPins, rollingFrame, PreviousRoll);
             PreviousRoll = roll;
             rollingFrame.Roll(roll);
             rolls.Insert(0, roll);
@@ -81,6 +79,12 @@ public class BowlingGame
             return totalScore;
         } 
     }
+
+    /// <summary>
+    /// List of all frames in the game.
+    /// </summary>
+    public List<Frame> Frames { get; private set; }
+
 
     /// <summary>
     /// Whether game is completed.

@@ -14,7 +14,7 @@ public class Roll
     /// <param name="RolledPins"></param>
     /// <param name="frame"></param>
     /// <param name="Previous"></param>
-    public Roll(int RolledPins, Frame frame, Roll Previous)
+    public Roll(int RolledPins, Frame frame, Roll? Previous)
     {
         PinsHit = RolledPins;
         RolledFrame = frame;
@@ -23,7 +23,7 @@ public class Roll
 
     public int PinsHit { get; private set; }
     public Frame RolledFrame { get; private set; }
-    public Roll PreviousRoll { get; private set; }
+    public Roll? PreviousRoll { get; private set; }
 
     public bool Strike
     {
