@@ -102,14 +102,7 @@ public class Frame
 
             if (!FinalFrame)
             {
-                if (Rolls.First().GetValueOrDefault() == PIN_COUNT)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return Rolls.First().GetValueOrDefault() == PIN_COUNT;
             }
             else
             {

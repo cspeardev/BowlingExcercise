@@ -36,16 +36,6 @@ public class Roll
 
     public bool Spare
     {
-        get
-        {
-            if (RolledFrame.Equals(PreviousRoll?.RolledFrame) && PinsHit + PreviousRoll?.PinsHit == Frame.PIN_COUNT)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        get => RolledFrame.Equals(PreviousRoll?.RolledFrame) && PinsHit + PreviousRoll?.PinsHit == Frame.PIN_COUNT;
     }
 }
