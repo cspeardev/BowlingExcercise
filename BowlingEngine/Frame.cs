@@ -63,16 +63,7 @@ public class Frame
             {
                 if (!FinalFrame)
                 {
-
-                    int remainingPins = PIN_COUNT;
-                    foreach (var pin in Rolls)
-                    {
-                        if (pin.HasValue)
-                        {
-                            remainingPins -= pin.Value;
-                        }
-                    }
-                    return remainingPins;
+                    return PIN_COUNT - Rolls.AsQueryable().Sum().GetValueOrDefault();
                 }
                 else
                 {
@@ -90,9 +81,7 @@ public class Frame
                     else
                     {
                         //Case for when there was a strike the first roll of the final frame, and a spare for the last two.
-                        int remainingPins = PIN_COUNT;
-                        remainingPins -= Rolls.LastOrDefault(r => r.HasValue).GetValueOrDefault();
-                        return remainingPins;
+                        return PIN_COUNT - Rolls.LastOrDefault(r => r.HasValue).GetValueOrDefault();
                     }
                 }
             }
