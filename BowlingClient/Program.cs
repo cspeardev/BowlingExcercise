@@ -18,14 +18,14 @@ while (continuePlaying)
     Console.WriteLine("Game over.");
     Console.WriteLine("Would you like to play again?");
     Console.WriteLine("Enter press Y and enter to play another game.");
-    string input = Console.ReadLine();
-    continuePlaying = input.ToLower() == "y";
+    string? input = Console.ReadLine();
+    continuePlaying = input?.ToLower() == "y";
 }
 
 
 
 
-void PrintGame(BowlingGame game)
+static void PrintGame(BowlingGame game)
 {
     StringBuilder builder = new();
 
@@ -34,7 +34,7 @@ void PrintGame(BowlingGame game)
     int frameNumber = 1;
     foreach (var frame in game.Frames)
     {
-        builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|{4,12}|", frameNumber++, frame.Rolls[0], frame.Rolls[1], frame.Rolls.Count() > 2 ? frame.Rolls[2].ToString() : "", frame.Score));
+        builder.AppendLine(String.Format("|{0,7}|{1,7}|{2,7}|{3,7}|{4,12}|", frameNumber++, frame.Rolls[0], frame.Rolls[1], frame.Rolls.Length > 2 ? frame.Rolls[2].ToString() : "", frame.Score));
     }
 
     if(game.LastRoll != null)
